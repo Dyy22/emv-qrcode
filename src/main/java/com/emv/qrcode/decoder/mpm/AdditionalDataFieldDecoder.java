@@ -70,6 +70,7 @@ public final class AdditionalDataFieldDecoder extends DecoderMpm<AdditionalDataF
       final String tag = TLVUtils.valueOfTag(value);
 
       final String derivateId = derivateId(tag);
+      if (derivateId.equals("50")) continue;
 
       if (tags.contains(tag)) {
         throw new DuplicateTagException("AdditionalDataField", tag, value);
