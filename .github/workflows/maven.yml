@@ -63,4 +63,6 @@ jobs:
       with:
         java-version: 17
     - name: Deploy Package
-      run: mvn clean deploy
+      run: mvn deploy
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
