@@ -130,7 +130,7 @@ public class MerchantPresentedModeValidatorTest {
 
     final PaymentSystemSpecificTemplate paymentSystemSpecificTemplate = new PaymentSystemSpecificTemplate();
     paymentSystemSpecificTemplate.setTag("50");
-    paymentSystemSpecificTemplate.setValue(paymentSystemSpecific);
+    paymentSystemSpecificTemplate.setValue(new TagLengthString("01", "ijkl").toString());
 
     final TagLengthString rFUforEMVCo = new TagLengthString();
     rFUforEMVCo.setTag("10");

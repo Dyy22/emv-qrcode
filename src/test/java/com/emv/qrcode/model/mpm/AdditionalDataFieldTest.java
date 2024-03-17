@@ -28,14 +28,9 @@ public class AdditionalDataFieldTest {
 
   @Test
   public void testSuccessToString() {
-
-    final PaymentSystemSpecific paymentSystemSpecific = new PaymentSystemSpecific();
-    paymentSystemSpecific.setGloballyUniqueIdentifier("1");
-    paymentSystemSpecific.addPaymentSystemSpecific(new TagLengthString("01", "i"));
-
     final PaymentSystemSpecificTemplate paymentSystemSpecificTemplate = new PaymentSystemSpecificTemplate();
     paymentSystemSpecificTemplate.setTag("50");
-    paymentSystemSpecificTemplate.setValue(paymentSystemSpecific);
+    paymentSystemSpecificTemplate.setValue(new TagLengthString("01", "i").toString());
 
     final AdditionalDataField additionalDataField = new AdditionalDataField();
     additionalDataField.setAdditionalConsumerDataRequest("tuvxy");
@@ -49,7 +44,7 @@ public class AdditionalDataFieldTest {
     additionalDataField.setTerminalLabel("klmno");
     additionalDataField.addPaymentSystemSpecific(paymentSystemSpecificTemplate);
 
-    assertThat(additionalDataField.toString(), equalTo("0105123450205678900305098760405543210505abcde0605fghij0705klmno0805pqres0905tuvxy5010000110101i"));
+    assertThat(additionalDataField.toString(), equalTo("0105123450205678900305098760405543210505abcde0605fghij0705klmno0805pqres0905tuvxy50050101i"));
 
   }
 

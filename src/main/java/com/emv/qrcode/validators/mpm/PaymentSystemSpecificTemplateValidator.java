@@ -16,16 +16,12 @@
 
 package com.emv.qrcode.validators.mpm;
 
-import static br.com.fluentvalidator.function.FunctionBuilder.of;
-import static br.com.fluentvalidator.predicate.ComparablePredicate.betweenInclusive;
-import static br.com.fluentvalidator.predicate.LogicalPredicate.not;
-import static br.com.fluentvalidator.predicate.ObjectPredicate.nullValue;
-import static br.com.fluentvalidator.predicate.StringPredicate.stringSizeBetween;
-
-import com.emv.qrcode.model.mpm.PaymentSystemSpecific;
+import br.com.fluentvalidator.AbstractValidator;
 import com.emv.qrcode.model.mpm.PaymentSystemSpecificTemplate;
 
-import br.com.fluentvalidator.AbstractValidator;
+import static br.com.fluentvalidator.function.FunctionBuilder.of;
+import static br.com.fluentvalidator.predicate.ComparablePredicate.betweenInclusive;
+import static br.com.fluentvalidator.predicate.StringPredicate.stringSizeBetween;
 
 // @formatter:off
 class PaymentSystemSpecificTemplateValidator extends AbstractValidator<PaymentSystemSpecificTemplate> {
@@ -47,14 +43,9 @@ class PaymentSystemSpecificTemplateValidator extends AbstractValidator<PaymentSy
       .must(betweenInclusive(tagStart, tagEnd))
       .critical();
 
-    ruleFor("PaymentSystemSpecificTemplate", of(PaymentSystemSpecificTemplate::getValue).andThen(PaymentSystemSpecific::toString))
+    ruleFor("PaymentSystemSpecificTemplate", of(PaymentSystemSpecificTemplate::getValue))
       .must(stringSizeBetween(1, maxSizeValue))
       .critical();
-
-    ruleFor(PaymentSystemSpecificTemplate::getValue)
-      .whenever(not(nullValue()))
-        .withValidator(new PaymentSystemSpecificValidator());
-
   }
 
 }

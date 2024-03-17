@@ -64,11 +64,10 @@ public class MerchantPresentedModeTest {
     merchantPresentMode.addRFUforEMVCo(rFUforEMVCo);
     merchantPresentMode.addUnreserved(unreserved);
 
-    assertThat(merchantPresentMode.toString(), equalTo("0002010102110204000426160004"
-        + "hoge0104abcd520441115303156540523.725502015603500570155802CN5914BEST TRAN"
-        + "SPORT6007BEIJING6107123456762950105123450205678900305098760405543210505ab"
-        + "cde0605fghij0705klmno0805pqres0905tuvxy5010000110101i64280002ZH0102北京020"
-        + "4最佳运输0304abcd65020080320016A011223344998877070812345678630432B3"));
+    assertThat(merchantPresentMode.toString(), equalTo("0002010102110204000426160004hoge0104abcd5204411153031565" +
+            "40523.725502015603500570155802CN5914BEST TRANSPORT6007BEIJING6107123456762900105123450205678900305098760405" +
+            "543210505abcde0605fghij0705klmno0805pqres0905tuvxy50050101i64280002ZH0102北京0204最佳运输0304abcd650200803200" +
+            "16A0112233449988770708123456786304A6BA"));
 
   }
 
@@ -128,14 +127,9 @@ public class MerchantPresentedModeTest {
   }
 
   private AdditionalDataFieldTemplate getAddtionalDataField() {
-
-    final PaymentSystemSpecific paymentSystemSpecific = new PaymentSystemSpecific();
-    paymentSystemSpecific.setGloballyUniqueIdentifier("1");
-    paymentSystemSpecific.addPaymentSystemSpecific(new TagLengthString("01", "i"));
-
     final PaymentSystemSpecificTemplate paymentSystemSpecificTemplate = new PaymentSystemSpecificTemplate();
     paymentSystemSpecificTemplate.setTag("50");
-    paymentSystemSpecificTemplate.setValue(paymentSystemSpecific);
+    paymentSystemSpecificTemplate.setValue(new TagLengthString("01", "i").toString());
 
     final AdditionalDataField additionalDataFieldValue = new AdditionalDataField();
     additionalDataFieldValue.setAdditionalConsumerDataRequest("tuvxy");

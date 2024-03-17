@@ -16,22 +16,20 @@
 
 package com.emv.qrcode.model.mpm;
 
-import java.util.Objects;
-
+import com.emv.qrcode.core.model.TLV;
+import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
-import com.emv.qrcode.core.model.TLV;
-
-import lombok.Setter;
+import java.util.Objects;
 
 @Setter
-public class PaymentSystemSpecificTemplate implements TLV<String, PaymentSystemSpecific> {
+public class PaymentSystemSpecificTemplate implements TLV<String, String> {
 
   private static final long serialVersionUID = -1445641777082739037L;
 
   private String tag;
 
-  private PaymentSystemSpecific value;
+  private String value;
 
   @Override
   public String getTag() {
@@ -39,7 +37,7 @@ public class PaymentSystemSpecificTemplate implements TLV<String, PaymentSystemS
   }
 
   @Override
-  public PaymentSystemSpecific getValue() {
+  public String getValue() {
     return value;
   }
 

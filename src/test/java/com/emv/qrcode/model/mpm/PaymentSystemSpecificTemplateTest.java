@@ -28,16 +28,11 @@ public class PaymentSystemSpecificTemplateTest {
 
   @Test
   public void testSuccessToString() {
-
-    final PaymentSystemSpecific value = new PaymentSystemSpecific();
-    value.setGloballyUniqueIdentifier("hoge");
-    value.addPaymentSystemSpecific(new TagLengthString("01", "abcd"));
-
     final PaymentSystemSpecificTemplate paymentSystemSpecificTemplate = new PaymentSystemSpecificTemplate();
-    paymentSystemSpecificTemplate.setValue(value);
+    paymentSystemSpecificTemplate.setValue(new TagLengthString("01", "abcd").toString());
     paymentSystemSpecificTemplate.setTag("50");
 
-    assertThat(paymentSystemSpecificTemplate.toString(), equalTo("50160004hoge0104abcd"));
+    assertThat(paymentSystemSpecificTemplate.toString(), equalTo("50080104abcd"));
 
   }
 
@@ -55,7 +50,7 @@ public class PaymentSystemSpecificTemplateTest {
   public void testSuccessToStringWhenValueIsEmpty() {
 
     final PaymentSystemSpecificTemplate PaymentSystemSpecificTemplate = new PaymentSystemSpecificTemplate();
-    PaymentSystemSpecificTemplate.setValue(new PaymentSystemSpecific());
+    PaymentSystemSpecificTemplate.setValue(new TagLengthString().toString());
 
     assertThat(PaymentSystemSpecificTemplate.toString(), equalTo(StringUtils.EMPTY));
   }
