@@ -2,7 +2,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.mvallim</groupId>
+	<groupId>com.github.dyy22</groupId>
 	<artifactId>emv-qrcode</artifactId>
 	<version>0.1.2-DYY</version>
 
@@ -19,6 +19,18 @@
 		<url>git@github.com:Dyy22/emv-qrcode.git</url>
 		<tag>HEAD</tag>
 	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>Github</name>
+			<url>https://maven.pkg.github.com/dyy22/emv-qrcode</url>
+		</repository>
+		<snapshotRepository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/dyy22/emv-qrcode</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<name>emv-qrcode</name>
 	<description>EMV QR Code</description>
@@ -193,15 +205,6 @@
 				<inherited>true</inherited>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>3.1.0</version>
-				<inherited>true</inherited>
-				<configuration>
-					<updateReleaseInfo>true</updateReleaseInfo>
-				</configuration>
-			</plugin>
 		</plugins>
 
 	</build>
@@ -236,17 +239,6 @@
 		</profile>
 		<profile>
 			<id>nexus-release</id>
-			<distributionManagement>
-				<repository>
-					<id>github</id>
-					<name>Github</name>
-					<url>https://maven.pkg.github.com/Dyy22/emv-qrcode</url>
-				</repository>
-				<snapshotRepository>
-					<id>github</id>
-					<url>https://maven.pkg.github.com/Dyy22/emv-qrcode</url>
-				</snapshotRepository>
-			</distributionManagement>
 			<build>
 				<plugins>
 					<plugin>
