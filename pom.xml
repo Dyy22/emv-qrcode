@@ -2,24 +2,24 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.dyy22</groupId>
+	<groupId>com.github.mvallim</groupId>
 	<artifactId>emv-qrcode</artifactId>
-	<version>0.1.21</version>
+	<version>0.1.2-DYY</version>
 
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<lombok.version>1.18.26</lombok.version>
+		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 	</properties>
 
-	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>Github Dyy22 emv-qrcode</name>
-			<url>https://maven.pkg.github.com/dyy22/emv-qrcode</url>
-		</repository>
-	</distributionManagement>
+	<scm>
+		<connection>scm:git:${project.scm.url}</connection>
+		<developerConnection>scm:git:${project.scm.url}</developerConnection>
+		<url>git@github.com:Dyy22/emv-qrcode.git</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<name>emv-qrcode</name>
 	<description>EMV QR Code</description>
@@ -42,7 +42,7 @@
 	<licenses>
 		<license>
 			<name>Apache 2</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
 			<distribution>repo</distribution>
 			<comments>A business-friendly OSS license</comments>
 		</license>
@@ -205,20 +205,12 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
 				<configuration>
-					<localCheckout>true</localCheckout>
-					<pushChanges>false</pushChanges>
-					<mavenExecutorId>forked-path</mavenExecutorId>
-					<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+					<scmCommentPrefix>[ci skip]</scmCommentPrefix>
+					<tagNameFormat>@{project.version}</tagNameFormat>
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
 			</plugin>
 		</plugins>
 

@@ -16,7 +16,7 @@
 
 package com.emv.qrcode.model.mpm;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3 .StringUtils;
 
 import lombok.Getter;
 
