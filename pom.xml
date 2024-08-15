@@ -11,7 +11,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<lombok.version>1.18.26</lombok.version>
-		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 	</properties>
 
 	<scm>
@@ -203,15 +202,6 @@
 					<updateReleaseInfo>true</updateReleaseInfo>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>${maven-release-plugin.version}</version>
-				<configuration>
-					<scmCommentPrefix>[ci skip]</scmCommentPrefix>
-					<tagNameFormat>@{project.version}</tagNameFormat>
-				</configuration>
-			</plugin>
 		</plugins>
 
 	</build>
@@ -247,16 +237,15 @@
 		<profile>
 			<id>nexus-release</id>
 			<distributionManagement>
-				<snapshotRepository>
-					<id>nexus-release</id>
-					<layout>default</layout>
-					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-				</snapshotRepository>
 				<repository>
-					<id>nexus-release</id>
-					<layout>default</layout>
-					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+					<id>github</id>
+					<name>Github</name>
+					<url>https://maven.pkg.github.com/Dyy22/emv-qrcode</url>
 				</repository>
+				<snapshotRepository>
+					<id>github</id>
+					<url>https://maven.pkg.github.com/Dyy22/emv-qrcode</url>
+				</snapshotRepository>
 			</distributionManagement>
 			<build>
 				<plugins>
